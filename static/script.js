@@ -1,3 +1,8 @@
+// redirect to deployment
+if (window.location.origin.endsWith('.repl.co') && !window.location.search.includes('dev')) {
+  window.location.replace('https://spice-escape-luisafk.replit.app');
+}
+
 let config = {
   gameTitle: 'Spice Escape',
   gameURL: location.origin,
