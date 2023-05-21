@@ -16,6 +16,7 @@ channel = "stable-21_11"
 
 [env]
 XDG_CONFIG_HOME = "/home/runner/.config"
+NODE_ENV = "development"
 
 [packager]
 language = "nodejs"
@@ -80,3 +81,4 @@ externalPort = 80
 
 [deployment]
 run = ["sh", "-c", "node ."]
+ignorePorts = false

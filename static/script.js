@@ -1,6 +1,7 @@
 // redirect to deployment
 if (window.location.origin.endsWith('.repl.co') && !window.location.search.includes('dev')) {
-  window.location.replace('https://spice-escape-luisafk.replit.app');
+  window.location.replace('https://spice-escape.com');
+  throw new Error('redirecting');
 }
 
 let config = {
