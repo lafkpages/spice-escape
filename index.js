@@ -1,7 +1,5 @@
-const http = require('http');
-
 if (process.env.NODE_ENV == 'development') {
-  http.createServer((req, res) => {
+  require('http').createServer((req, res) => {
     res.writeHead(301, {
       'Location': 'https://spice-escape.com'
     });
