@@ -1,6 +1,13 @@
 {
   "web_apps": [
     {
+      "manifest": "https://spice-escape.com/manifest.json",
+      "details": {
+        "paths": ["/*"],
+        "exclude_paths": ["/internal/*"]
+      }
+    },
+    {
       "manifest": "https://spice-escape.luisafk.repl.co/manifest.json",
       "details": {
         "paths": ["/*"],
