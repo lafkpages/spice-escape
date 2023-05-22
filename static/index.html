@@ -1,111 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spice Escape</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spice Escape</title>
 
-  <!-- app info -->
-  <meta name="author" content="LuisAFK">
-  <meta name="application-name" content="Spice Escape">
-  <meta name="description" content="Runners have to escape the killers, which try to kill the runners using their spicy abilities!">
-  <meta property="og:title" content="Spice Escape">
-  <meta property="og:description" content="Runners have to escape the killers, which try to kill the runners using their spicy abilities!">
+    <!-- app info -->
+    <meta name="author" content="LuisAFK" />
+    <meta name="application-name" content="Spice Escape" />
+    <meta
+      name="description"
+      content="Runners have to escape the killers, which try to kill the runners using their spicy abilities!"
+    />
+    <meta property="og:title" content="Spice Escape" />
+    <meta
+      property="og:description"
+      content="Runners have to escape the killers, which try to kill the runners using their spicy abilities!"
+    />
 
-  <!-- app thumbnail -->
-  <meta property="og:image" content="/img/header.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:alt" content="Spice Escape">
-  <meta property="og:image:width" content="1024">
-  <meta property="og:image:height" content="512">
+    <!-- app thumbnail -->
+    <meta property="og:image" content="/img/header.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Spice Escape" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="512" />
 
-  <!-- icons -->
-  <link rel="shortcut icon" href="/img/icon/favicon.ico" type="image/x-icon" sizes="16x16 32x32 48x48 64x64 96x96 128x128">
-  <link rel="shortcut icon" href="/img/icon/favicon.png" type="image/png" sizes="16x16 32x32 48x48 64x64 96x96 128x128">
-  <link rel="shortcut icon" href="/img/icon/favicon512.png" type="image/png" sizes="144x144 192x192 256x256 512x512 1024x1024">
-  <link rel="apple-touch-icon" href="/img/icon/favicon.png" type="image/png" sizes="16x16 32x32 48x48 64x64 96x96 128x128">
+    <!-- icons -->
+    <link
+      rel="shortcut icon"
+      href="/img/icon/favicon.ico"
+      type="image/x-icon"
+      sizes="16x16 32x32 48x48 64x64 96x96 128x128"
+    />
+    <link
+      rel="shortcut icon"
+      href="/img/icon/favicon.png"
+      type="image/png"
+      sizes="16x16 32x32 48x48 64x64 96x96 128x128"
+    />
+    <link
+      rel="shortcut icon"
+      href="/img/icon/favicon512.png"
+      type="image/png"
+      sizes="144x144 192x192 256x256 512x512 1024x1024"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/img/icon/favicon.png"
+      type="image/png"
+      sizes="16x16 32x32 48x48 64x64 96x96 128x128"
+    />
 
-  <!-- keywords for indexing -->
-  <meta name="keywords" content="spice, escape, spice escape, luisafk, game, runner">
+    <!-- keywords for indexing -->
+    <meta
+      name="keywords"
+      content="spice, escape, spice escape, luisafk, game, runner"
+    />
 
-  <!-- avoid duplicate URLs -->
-  <link rel="canonical" href="https://spice-escape.com">
-  <meta property="og:url" content="https://spice-escape.com">
+    <!-- avoid duplicate URLs -->
+    <link rel="canonical" href="https://spice-escape.com" />
+    <meta property="og:url" content="https://spice-escape.com" />
 
-  <!-- Google Search Console verification -->
-  <meta name="google-site-verification" content="YEeb-Zs42URLgjLoTyMvTgl4a289kbtclLir9tk-SfM" />
+    <!-- Google Search Console verification -->
+    <meta
+      name="google-site-verification"
+      content="YEeb-Zs42URLgjLoTyMvTgl4a289kbtclLir9tk-SfM"
+    />
 
-  <!-- PWA manifest -->
-  <link rel="manifest" href="/manifest.json">
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json" />
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
-  <script src="/socket.io/socket.io.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser-arcade-physics.min.js"></script>
+    <script src="/socket.io/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser-arcade-physics.min.js"></script>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
-  <script src="https://replit-game-ads.luisafk.repl.co/widget.js" defer async></script>
-</head>
-<body>
-  <div id="home">
-    <div id="home-main">
-      <div id="ads">
-        <h4>More games</h4>
-        <div class="replit-game-ad-widget" data-ru="DkkfkrDnxnxj/Cake-clicker" data-bg="aquamarine" data-s="150x90"></div>
+    <script
+      src="https://replit-game-ads.luisafk.repl.co/widget.js"
+      defer
+      async
+    ></script>
+  </head>
+  <body>
+    <div id="home">
+      <div id="home-main">
+        <div id="ads">
+          <h4>More games</h4>
+          <div
+            class="replit-game-ad-widget"
+            data-ru="DkkfkrDnxnxj/Cake-clicker"
+            data-bg="aquamarine"
+            data-s="150x90"
+          ></div>
+        </div>
+
+        <header>
+          <img
+            src="/img/headerNoHotSauce.png"
+            alt="Spice Escape"
+            id="header-img"
+          />
+          <img src="/img/header.png" alt="Spice Escape" id="header-full-img" />
+          <img src="/img/hotSauce.png" alt="" id="header-hot-sauce" />
+        </header>
+
+        <div id="nick-container">
+          <input
+            type="text"
+            placeholder=" Enter your name"
+            id="nick-inp"
+            data-lpignore="true"
+          />
+          <button id="play-btn">Play</button>
+        </div>
       </div>
 
-      <header>
-        <img src="/img/headerNoHotSauce.png" alt="Spice Escape" id="header-img">
-        <img src="/img/header.png" alt="Spice Escape" id="header-full-img">
-        <img src="/img/hotSauce.png" alt="" id="header-hot-sauce">
-      </header>
-
-      <div id="nick-container">
-        <input type="text" placeholder=" Enter your name" id="nick-inp" data-lpignore="true">
-        <button id="play-btn">Play</button>
+      <div id="about">
+        <h2>About the game</h2>
+        <p>
+          This game was made for the Replit
+          <a href="https://kajam.replit.com" target="_blank" rel="noreferrer"
+            >KaJAM 2022</a
+          >
+          contest. The objective of the game is for the runners to run away from
+          the killers and escape before being killed by the killer's powers,
+          some of which include using
+          <span class="spicy-cursor">hot sauce</span>. The killers must kill all
+          of the runners before they escape to win the game
+        </p>
       </div>
     </div>
 
-    <div id="about">
-      <h2>About the game</h2>
-      <p>This game was made for the Replit <a href="https://kajam.replit.com" target="_blank" rel="noreferrer">KaJAM 2022</a> contest. The objective of the game is for the runners to run away from the killers and escape before being killed by the killer's powers, some of which include using <span class="spicy-cursor">hot sauce</span>. The killers must kill all of the runners before they escape to win the game</p>
-    </div>
-  </div>
+    <div id="game">
+      <div id="abilities">
+        <button class="ability" id="ability-1">
+          <span class="ability-cooldown">0</span>
+          <img class="ability-img" />
+        </button>
 
-  <div id="game">
-    <div id="abilities">
-      <button class="ability" id="ability-1">
-        <span class="ability-cooldown">0</span>
-        <img class="ability-img">
-      </button>
-      
-      <button class="ability" id="ability-2">
-        <span class="ability-cooldown">0</span>
-        <img class="ability-img">
-      </button>
-      
-      <button class="ability" id="ability-3">
-        <span class="ability-cooldown">0</span>
-        <img class="ability-img">
-      </button>
+        <button class="ability" id="ability-2">
+          <span class="ability-cooldown">0</span>
+          <img class="ability-img" />
+        </button>
 
-      <button class="ability" id="ability-4">
-        <span class="ability-cooldown">0</span>
-        <img class="ability-img">
-      </button>
-    </div>
-  </div>
-  
-  <div id="end-screen">
-    <h1 id="end-screen-title">Game ended</h1>
+        <button class="ability" id="ability-3">
+          <span class="ability-cooldown">0</span>
+          <img class="ability-img" />
+        </button>
 
-    <div id="end-screen-winners">
-      
+        <button class="ability" id="ability-4">
+          <span class="ability-cooldown">0</span>
+          <img class="ability-img" />
+        </button>
+      </div>
     </div>
 
-    <button id="end-screen-home">Home</button>
-  </div>
-</body>
+    <div id="end-screen">
+      <h1 id="end-screen-title">Game ended</h1>
+
+      <div id="end-screen-winners"></div>
+
+      <button id="end-screen-home">Home</button>
+    </div>
+  </body>
 </html>

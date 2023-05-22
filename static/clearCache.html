@@ -1,121 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spice Escape - Clear cache</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spice Escape - Clear cache</title>
 
-  <!-- app info -->
-  <meta name="author" content="LuisAFK">
-  <meta name="application-name" content="Spice Escape">
-  <meta name="description" content="Runners have to escape the killers, which try to kill the runners using their spicy abilities!">
-  <meta property="og:title" content="Spice Escape">
-  <meta property="og:description" content="Runners have to escape the killers, which try to kill the runners using their spicy abilities!">
+    <!-- app info -->
+    <meta name="author" content="LuisAFK" />
+    <meta name="application-name" content="Spice Escape" />
+    <meta
+      name="description"
+      content="Runners have to escape the killers, which try to kill the runners using their spicy abilities!"
+    />
+    <meta property="og:title" content="Spice Escape" />
+    <meta
+      property="og:description"
+      content="Runners have to escape the killers, which try to kill the runners using their spicy abilities!"
+    />
 
-  <!-- app thumbnail -->
-  <meta property="og:image" content="/img/header.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:alt" content="Spice Escape">
-  <meta property="og:image:width" content="1024">
-  <meta property="og:image:height" content="512">
+    <!-- app thumbnail -->
+    <meta property="og:image" content="/img/header.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Spice Escape" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="512" />
 
-  <!-- icons -->
-  <link rel="shortcut icon" href="/img/icon/favicon.ico" type="image/x-icon" sizes="16x16 32x32 48x48 64x64 96x96 128x128">
-  <link rel="shortcut icon" href="/img/icon/favicon.png" type="image/png" sizes="16x16 32x32 48x48 64x64 96x96 128x128">
-  <link rel="shortcut icon" href="/img/icon/favicon512.png" type="image/png" sizes="144x144 192x192 256x256 512x512 1024x1024">
-  <link rel="apple-touch-icon" href="/img/icon/favicon.png" type="image/png" sizes="16x16 32x32 48x48 64x64 96x96 128x128">
+    <!-- icons -->
+    <link
+      rel="shortcut icon"
+      href="/img/icon/favicon.ico"
+      type="image/x-icon"
+      sizes="16x16 32x32 48x48 64x64 96x96 128x128"
+    />
+    <link
+      rel="shortcut icon"
+      href="/img/icon/favicon.png"
+      type="image/png"
+      sizes="16x16 32x32 48x48 64x64 96x96 128x128"
+    />
+    <link
+      rel="shortcut icon"
+      href="/img/icon/favicon512.png"
+      type="image/png"
+      sizes="144x144 192x192 256x256 512x512 1024x1024"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/img/icon/favicon.png"
+      type="image/png"
+      sizes="16x16 32x32 48x48 64x64 96x96 128x128"
+    />
 
-  <!-- keywords for indexing -->
-  <meta name="keywords" content="spice, escape, spice escape, luisafk, game, runner, clear, cache, erase, reset, bug, broken">
+    <!-- keywords for indexing -->
+    <meta
+      name="keywords"
+      content="spice, escape, spice escape, luisafk, game, runner, clear, cache, erase, reset, bug, broken"
+    />
 
-  <!-- avoid duplicate URLs -->
-  <link rel="canonical" href="https://spice-escape.luisafk.repl.co/clearCache.html">
-  <meta property="og:url" content="https://spice-escape.luisafk.repl.co/clearCache.html">
+    <!-- avoid duplicate URLs -->
+    <link
+      rel="canonical"
+      href="https://spice-escape.luisafk.repl.co/clearCache.html"
+    />
+    <meta
+      property="og:url"
+      content="https://spice-escape.luisafk.repl.co/clearCache.html"
+    />
 
-  <!-- PWA manifest -->
-  <link rel="manifest" href="/manifest.json">
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json" />
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
-  <script>
-    async function getServiceWorker() {
-      return navigator.serviceWorker.controller || (await navigator.serviceWorker.ready).active;
-    }
+    <script>
+      async function getServiceWorker() {
+        return (
+          navigator.serviceWorker.controller ||
+          (await navigator.serviceWorker.ready).active
+        );
+      }
 
-    let registration = null;
+      let registration = null;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const btn1 = document.querySelector('button#clear-cache');
-      //const btn2 = document.querySelector('button#unregister');
-  
-      btn1.addEventListener('click', () => {
-        getServiceWorker().then(sw => {
-          console.log('Deleting cache...');
-          caches.delete('spice-escape').then(console.log);
-        });
-      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn1 = document.querySelector("button#clear-cache");
+        //const btn2 = document.querySelector('button#unregister');
 
-      // btn2.addEventListener('click', () => {
-      //   if (registration)
-      //     registration.unregister().then(res => {
-      //       console.log('Unregistration result:', res);
-      //     });
-      // });
-    });
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', e => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(res => {
-            registration = res;
-            console.log('[%c\xE6%c] Service Worker registered', 'font-family: webdings;', '');
-          })
-          .catch(err => {
-            console.log('[%cr%c] Error registering Service Worker:', 'font-family: webdings;', '', err);
+        btn1.addEventListener("click", () => {
+          getServiceWorker().then((sw) => {
+            console.log("Deleting cache...");
+            caches.delete("spice-escape").then(console.log);
           });
+        });
+
+        // btn2.addEventListener('click', () => {
+        //   if (registration)
+        //     registration.unregister().then(res => {
+        //       console.log('Unregistration result:', res);
+        //     });
+        // });
       });
-    }
-  </script>
 
-  <style>
-    body {
-      margin: 0px;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-    }
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", (e) => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((res) => {
+              registration = res;
+              console.log(
+                "[%c\xE6%c] Service Worker registered",
+                "font-family: webdings;",
+                ""
+              );
+            })
+            .catch((err) => {
+              console.log(
+                "[%cr%c] Error registering Service Worker:",
+                "font-family: webdings;",
+                "",
+                err
+              );
+            });
+        });
+      }
+    </script>
 
-    #title {
-      margin-block-end: 0px;
-    }
+    <style>
+      body {
+        margin: 0px;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+      }
 
-    * {
-      color: black;
-    }
+      #title {
+        margin-block-end: 0px;
+      }
 
-    div#buttons {
-      width: fit-content;
-      border: none;
-    }
-  </style>
-</head>
-<body>
-  <h2 id="title">Game not working?</h2>
-  <p>Try clearing the game cache with the button bellow.</p>
+      * {
+        color: black;
+      }
 
-  <br>
+      div#buttons {
+        width: fit-content;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="title">Game not working?</h2>
+    <p>Try clearing the game cache with the button bellow.</p>
 
-  <div id="buttons">
-    <button><a id="home" style="text-decoration: none;" href="/">Home</a></button>
-    &nbsp;
-    <button id="clear-cache">Clear all cache</button>
-    <!-- &nbsp;
+    <br />
+
+    <div id="buttons">
+      <button>
+        <a id="home" style="text-decoration: none" href="/">Home</a>
+      </button>
+      &nbsp;
+      <button id="clear-cache">Clear all cache</button>
+      <!-- &nbsp;
     <button id="unregister" style="background: red;">Unregister Service Worker</button> -->
-  </div>
-</body>
+    </div>
+  </body>
 </html>

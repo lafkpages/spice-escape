@@ -12,14 +12,15 @@
    * Please read /fonts/spice-escape/readme.txt
    * and /fonts/spice-escape/license.txt
    */
-  
-  font-family: 'Spice Escape';
-  src: url('/fonts/spice-escape/spice-escape.ttf') format('truetype'),
-       url('/fonts/spice-escape/spice-escape.woff2') format('woff2'),
-       url('/fonts/spice-escape/spice-escape.woff') format('woff');
+
+  font-family: "Spice Escape";
+  src: url("/fonts/spice-escape/spice-escape.ttf") format("truetype"),
+    url("/fonts/spice-escape/spice-escape.woff2") format("woff2"),
+    url("/fonts/spice-escape/spice-escape.woff") format("woff");
 }
 
-html, body {
+html,
+body {
   margin: 0px;
   padding: 0px;
   border: none !important;
@@ -28,7 +29,7 @@ html, body {
 }
 
 .spicy-cursor {
-  cursor: url('/img/kajam-cursor.png'), auto;
+  cursor: url("/img/kajam-cursor.png"), auto;
 }
 
 * {
@@ -36,7 +37,7 @@ html, body {
   image-rendering: pixelated;
   outline: none;
 
-  font-family: 'Spice Escape', monospace;
+  font-family: "Spice Escape", monospace;
 
   text-transform: uppercase;
 }
@@ -45,23 +46,29 @@ button {
   cursor: pointer;
 }
 
-div[class], div[id], button, input {
+div[class],
+div[id],
+button,
+input {
   border: 2px solid black;
   border-radius: 0px;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--orange);
   filter: grayscale(0.5);
   opacity: 1; /* Firefox */
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: var(--orange);
   filter: grayscale(0.5);
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
+::-ms-input-placeholder {
+  /* Microsoft Edge */
   color: var(--orange);
   filter: grayscale(0.5);
 }
@@ -141,7 +148,8 @@ div#home header {
   user-select: none;
 }
 
-div#home header, div#home div#nick-container {
+div#home header,
+div#home div#nick-container {
   animation-duration: 1s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
@@ -169,7 +177,8 @@ div#home header, div#home div#nick-container {
   }
 }
 
-div#home header img#header-img, div#home header img#header-full-img {
+div#home header img#header-img,
+div#home header img#header-full-img {
   height: 100%;
 }
 
@@ -178,7 +187,8 @@ div#home header img#header-full-img {
 }
 
 @media only screen and (max-width: 1000px) {
-  div#home header img#header-img, div#home header img#header-hot-sauce {
+  div#home header img#header-img,
+  div#home header img#header-hot-sauce {
     display: none;
   }
 
@@ -394,6 +404,9 @@ div#end-screen div#end-screen-winners div.end-screen-player img {
   background-position: 0 0;
 }
 
-div#end-screen div#end-screen-winners div.end-screen-player.end-screen-player-killer img {
+div#end-screen
+  div#end-screen-winners
+  div.end-screen-player.end-screen-player-killer
+  img {
   background-position-x: -1024px;
 }
