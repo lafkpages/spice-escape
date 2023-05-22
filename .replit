@@ -82,3 +82,4 @@ externalPort = 80
 [deployment]
 run = ["sh", "-c", "node ."]
 ignorePorts = false
+deploymentTarget = "gce"
