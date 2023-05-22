@@ -3,3 +3,5 @@ node_modules
 .cache
 .upm
 .git
+static/google*.html
+static/fonts
