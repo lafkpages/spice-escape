@@ -32,6 +32,9 @@
   "orientation": "landscape",
   "url_handlers": [
     {
+      "origin": "https://spice-escape.com",
+    },
+    {
       "origin": "https://spice-escape.luisafk.repl.co"
     },
     {
