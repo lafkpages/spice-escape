@@ -1,5 +1,5 @@
 const cacheName = "spice-escape";
-const origin = "https://spice-escape.luisafk.repl.co";
+const origin = "https://spice-escape.com";
 const assets = [
   "/",
   "/style.css",
