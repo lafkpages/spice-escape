@@ -38,7 +38,11 @@ const maxNickLength = 20;
 // CORS
 app.use(
   cors({
-    origin: ["https://spice-escape.luisafk.repl.co"],
+    origin: [
+      "https://spice-escape.luisafk.repl.co",
+      "https://spice-escape.onrender.com",
+      "https://spice-escape.com"
+    ],
   })
 );
 
