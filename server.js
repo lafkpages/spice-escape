@@ -41,7 +41,7 @@ app.use(
     origin: [
       "https://spice-escape.luisafk.repl.co",
       "https://spice-escape.onrender.com",
-      "https://spice-escape.com"
+      "https://spice-escape.com",
     ],
   })
 );
