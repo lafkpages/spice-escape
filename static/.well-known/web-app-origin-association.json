@@ -13,6 +13,13 @@
         "paths": ["/*"],
         "exclude_paths": ["/internal/*"]
       }
+    },
+    {
+      "manifest": "https://spice-escape.onrender.com/manifest.json",
+      "details": {
+        "paths": ["/*"],
+        "exclude_paths": ["/internal/*"]
+      }
     }
   ]
 }
