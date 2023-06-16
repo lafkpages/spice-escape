@@ -4,7 +4,8 @@
   "description": "Runners have to escape the killers, which try to kill the runners using their spicy abilities!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "LuisAFK",
