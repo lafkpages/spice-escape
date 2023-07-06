@@ -57,6 +57,23 @@ app.get("/.well-known/web-app-origin-association", (req, res) => {
 // serve static files
 app.use(express.static(__dirname + "/static"));
 
+// function to send message to webhook
+async function webhook(msg) {
+  if (typeof msg == "string") {
+    msg = { content: msg };
+  }
+
+  return await (
+    await fetch(process.env.WEBHOOK + "?wait=true", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(msg),
+    })
+  ).text();
+}
+
 function getGameRoomIDs() {
   return [...io.sockets.adapter.rooms.keys()].filter((roomId) =>
     roomId.startsWith(gameRoomPrefix)
