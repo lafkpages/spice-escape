@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV == "development") {
-  console.log('Running dev server (redirect)');
+  console.log("Running dev server (redirect)");
   require("http")
     .createServer((req, res) => {
       res.writeHead(301, {
