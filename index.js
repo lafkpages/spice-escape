@@ -9,5 +9,6 @@ if (process.env.NODE_ENV == "development") {
     })
     .listen(3000);
 } else {
+  console.log("Running main server (game)");
   require("./server.js");
 }
