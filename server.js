@@ -293,7 +293,26 @@ io.on("connection", (socket) => {
       .substr(0, maxNickLength)
       .replace(/['"\/\\<>\u200b\u2800]/gi, "")
       .toUpperCase();
-    if (nick) players[socket.id].nick = nick;
+
+    if (nick) {
+      players[socket.id].nick = nick;
+
+      webhook({
+        embeds: [
+          {
+            title: "Player joined!",
+            fields: [
+              {
+                name: "Nick",
+                value: nick,
+              },
+            ],
+          },
+        ],
+      }).catch((err) => {
+        console.error("[WEBHOOK]", err);
+      });
+    }
   });
 
   socket.on("move", (data) => {
