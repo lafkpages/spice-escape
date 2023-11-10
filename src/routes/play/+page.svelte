@@ -8,7 +8,7 @@
 
 	onMount(async () => {
 		if (browser) {
-			game = new phaser!.Game(config);
+			game = new phaser!.Game(config());
 		}
 	});
 </script>
