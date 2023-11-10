@@ -43,17 +43,15 @@ input {
 	text-transform: inherit;
 	text-decoration: none;
 	font-size: 1em;
+
+	&:focus-visible {
+		outline: 1.5px solid black;
+	}
 }
 
 button,
 [role='button'] {
 	background-color: var(--grey);
-}
-
-button:focus-visible,
-[role='button']:focus-visible,
-input:focus-visible {
-	outline: 1.5px solid black;
 }
 
 ::placeholder {
