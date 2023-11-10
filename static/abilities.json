@@ -1,45 +1,45 @@
 {
-  "runner": {
-    "sprint": {
-      "effect": 3.5,
-      "cooldown": 20,
-      "speed": 4
-    },
-    "freeze": {
-      "effect": 10,
-      "cooldown": 50
-    },
-    "heal": {
-      "effect": 5,
-      "cooldown": 10,
-      "hitbox": {
-        "x": 64,
-        "y": 64
-      }
-    }
-  },
+	"runner": {
+		"sprint": {
+			"effect": 3.5,
+			"cooldown": 20,
+			"speed": 4
+		},
+		"freeze": {
+			"effect": 10,
+			"cooldown": 50
+		},
+		"heal": {
+			"effect": 5,
+			"cooldown": 10,
+			"hitbox": {
+				"x": 64,
+				"y": 64
+			}
+		}
+	},
 
-  "killer": {
-    "sprint": {
-      "effect": 3.5,
-      "cooldown": 30,
-      "speed": 5
-    },
-    "spice": {
-      "effect": 1.2,
-      "cooldown": 9,
-      "hitbox": {
-        "x": 64,
-        "y": 64
-      }
-    },
-    "spice2": {
-      "effect": 0,
-      "cooldown": 10
-    },
-    "freeze": {
-      "effect": 1.5,
-      "cooldown": 30
-    }
-  }
+	"killer": {
+		"sprint": {
+			"effect": 3.5,
+			"cooldown": 30,
+			"speed": 5
+		},
+		"spice": {
+			"effect": 1.2,
+			"cooldown": 9,
+			"hitbox": {
+				"x": 64,
+				"y": 64
+			}
+		},
+		"spice2": {
+			"effect": 0,
+			"cooldown": 10
+		},
+		"freeze": {
+			"effect": 1.5,
+			"cooldown": 30
+		}
+	}
 }
