@@ -1,0 +1,11 @@
+@font-face {
+	/*
+   * Please read /fonts/spice-escape/readme.txt
+   * and /fonts/spice-escape/license.txt
+   */
+
+	font-family: 'Spice Escape';
+	src: url('/fonts/spice-escape/spice-escape.ttf') format('truetype'),
+		url('/fonts/spice-escape/spice-escape.woff2') format('woff2'),
+		url('/fonts/spice-escape/spice-escape.woff') format('woff');
+}
