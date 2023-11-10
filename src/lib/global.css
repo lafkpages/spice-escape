@@ -1,0 +1,65 @@
+:root {
+	--blue-light: #87ceeb;
+	--blue-dark: #579cb7;
+	--orange: #f65200;
+}
+
+@font-face {
+	/*
+   * Please read /fonts/spice-escape/readme.txt
+   * and /fonts/spice-escape/license.txt
+   */
+
+	font-family: 'Spice Escape';
+	src: url('/fonts/spice-escape/spice-escape.ttf') format('truetype'),
+		url('/fonts/spice-escape/spice-escape.woff2') format('woff2'),
+		url('/fonts/spice-escape/spice-escape.woff') format('woff');
+}
+
+body {
+	margin: 0px;
+
+	width: 100vw;
+	height: 100vh;
+
+	width: 100dvw;
+	height: 100dvh;
+
+	background-color: var(--blue-light);
+
+	font-family: 'Spice Escape', monospace;
+	text-transform: uppercase;
+}
+
+button,
+input {
+	border: 2px solid black;
+	border-radius: 0px;
+	color: var(--orange);
+
+	font-family: inherit;
+	text-transform: inherit;
+}
+
+button:focus-visible,
+input:focus-visible {
+	outline: 1.5px solid black;
+}
+
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: var(--orange);
+	opacity: 0.7;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: var(--orange);
+	opacity: 0.7;
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: var(--orange);
+	opacity: 0.7;
+}

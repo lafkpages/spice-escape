@@ -1,50 +1,50 @@
 {
-  "name": "Spice Escape",
-  "short_name": "Spice Escape",
-  "description": "Runners have to escape the killers, which try to kill the runners using their spicy abilities!",
-  "dir": "ltr",
-  "lang": "en",
-  "id": "/",
-  "start_url": "/",
-  "scope": "/",
-  "prefer_related_applications": false,
-  "categories": ["games", "entertainment"],
-  "icons": [
-    {
-      "src": "/img/icon/favicon.ico",
-      "type": "image/x-icon",
-      "sizes": "16x16 32x32 48x48 64x64 128x128"
-    },
-    {
-      "src": "/img/icon/favicon.png",
-      "type": "image/png",
-      "sizes": "16x16 32x32 48x48 64x64 96x96 128x128"
-    },
-    {
-      "src": "/img/icon/favicon512.png",
-      "type": "image/png",
-      "sizes": "144x144 192x192 256x256 512x512"
-    }
-  ],
-  "background_color": "#87ceeb",
-  "theme_color": "#87ceeb",
-  "display": "standalone",
-  "orientation": "landscape",
-  "url_handlers": [
-    {
-      "origin": "https://spice-escape.com"
-    },
-    {
-      "origin": "https://spice-escape.replit.app"
-    },
-    {
-      "origin": "https://spice-escape.luisafk.repl.co"
-    },
-    {
-      "origin": "http://spice-escape.luisafk.repl.co"
-    },
-    {
-      "origin": "https://spice-escape.onrender.com"
-    }
-  ]
+	"name": "Spice Escape",
+	"short_name": "Spice Escape",
+	"description": "Runners have to escape the killers, which try to kill the runners using their spicy abilities!",
+	"dir": "ltr",
+	"lang": "en",
+	"id": "/",
+	"start_url": "/",
+	"scope": "/",
+	"prefer_related_applications": false,
+	"categories": ["games", "entertainment"],
+	"icons": [
+		{
+			"src": "/img/icon/favicon.ico",
+			"type": "image/x-icon",
+			"sizes": "16x16 32x32 48x48 64x64 128x128"
+		},
+		{
+			"src": "/img/icon/favicon.png",
+			"type": "image/png",
+			"sizes": "16x16 32x32 48x48 64x64 96x96 128x128"
+		},
+		{
+			"src": "/img/icon/favicon512.png",
+			"type": "image/png",
+			"sizes": "144x144 192x192 256x256 512x512"
+		}
+	],
+	"background_color": "#87ceeb",
+	"theme_color": "#87ceeb",
+	"display": "standalone",
+	"orientation": "landscape",
+	"url_handlers": [
+		{
+			"origin": "https://spice-escape.com"
+		},
+		{
+			"origin": "https://spice-escape.replit.app"
+		},
+		{
+			"origin": "https://spice-escape.luisafk.repl.co"
+		},
+		{
+			"origin": "http://spice-escape.luisafk.repl.co"
+		},
+		{
+			"origin": "https://spice-escape.onrender.com"
+		}
+	]
 }

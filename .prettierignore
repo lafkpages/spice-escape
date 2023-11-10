@@ -1,7 +1,16 @@
+.DS_Store
 node_modules
-.config
-.cache
-.upm
-.git
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+
 static/google*.html
 static/fonts
+
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
