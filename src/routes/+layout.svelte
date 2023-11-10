@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '$lib/global.css';
+	import '$lib/scss/_global.scss';
 </script>
 
 <svelte:head>

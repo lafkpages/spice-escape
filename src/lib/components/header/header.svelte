@@ -3,7 +3,7 @@
 	<img src="/img/hotSauce.png" alt="" class="hot-sauce" />
 </header>
 
-<style>
+<style lang="scss">
 	header {
 		width: 100%;
 		aspect-ratio: 2;
@@ -13,22 +13,22 @@
 		justify-content: center;
 
 		position: relative;
-	}
 
-	img {
-		image-rendering: crisp-edges;
-		image-rendering: pixelated;
-	}
+		img {
+			image-rendering: crisp-edges;
+			image-rendering: pixelated;
+		}
 
-	img.header {
-		height: 100%;
-	}
+		.header {
+			height: 100%;
+		}
 
-	.hot-sauce {
-		position: absolute;
-		right: 14%;
-		top: 19%;
-		height: 62.2%;
-		transform: rotate(-15deg);
+		.hot-sauce {
+			position: absolute;
+			right: 14%;
+			top: 19%;
+			height: 62.2%;
+			transform: rotate(-15deg);
+		}
 	}
 </style>
