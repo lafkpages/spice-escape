@@ -22,7 +22,7 @@
 	</p>
 </section>
 
-<style>
+<style lang="scss">
 	section {
 		width: 100%;
 		height: 100vh;
@@ -35,15 +35,15 @@
 		text-align: center;
 
 		color: var(--orange);
-	}
 
-	section p {
-		max-width: 50em;
-	}
+		p {
+			max-width: 50em;
+		}
 
-	.play-container {
-		display: flex;
-		gap: 12px;
-		width: max-content;
+		.play-container {
+			display: flex;
+			gap: 12px;
+			width: max-content;
+		}
 	}
 </style>
