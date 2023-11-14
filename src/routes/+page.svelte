@@ -27,6 +27,8 @@
 		width: 100%;
 		height: 100vh;
 		height: 100dvh;
+		padding: 32px;
+		box-sizing: border-box;
 
 		display: flex;
 		flex-direction: column;
