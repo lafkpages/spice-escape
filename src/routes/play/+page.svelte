@@ -3,6 +3,7 @@
 	import { browser } from '$app/environment';
 	import { config } from '$lib/gameConfig';
 	import { phaser } from '$lib/phaser';
+	import { abilities } from '$lib/abilities';
 
 	let game: import('phaser').Game;
 
