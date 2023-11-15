@@ -81,37 +81,6 @@ export function create(this: Scene) {
 		}
 	}, 500);
 
-	// header hot sauce
-	this.headerHotSauce = this.homeHeader.querySelector('img#header-hot-sauce');
-
-	this.setHeaderHotSauce = (e) => {
-		// show header
-		this.homeHeader.style.visibility = 'visible';
-
-		// show nick container
-		this.nickContainer.style.visibility = 'visible';
-
-		// get header positions
-		//const pos = this.homeHeader.getBoundingClientRect();
-
-		// position hot sauce
-		//this.headerHotSauce.style.top = /*pos.top +*/ 96 + 'px';
-		//this.headerHotSauce.style.left = pos.left + 748 + 'px';
-
-		// do header transition
-		this.homeHeader.style.animationName = 'header-anim';
-
-		// do nick transition
-		this.nickContainer.style.animationName = 'nick-anim';
-
-		// fix horizontal scroll bug
-		if (this.adsContainer) {
-			this.adsContainer.scrollIntoView();
-		}
-	};
-	this.setHeaderHotSauce();
-	if (!has_set_events) window.addEventListener('resize', this.setHeaderHotSauce.bind(this));
-
 	// when play button clicked
 	if (!has_set_events)
 		this.playBtn.addEventListener('click', (e) => {
