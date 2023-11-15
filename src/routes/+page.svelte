@@ -1,11 +1,18 @@
 <script lang="ts">
 	import { Header } from '$lib/components/header';
+	import { onMount } from 'svelte';
+
+	let anim = false;
+
+	onMount(() => {
+		anim = true;
+	});
 </script>
 
 <section>
 	<Header />
 
-	<div class="play-container">
+	<div class="play-container" class:anim>
 		<input type="text" placeholder="Enter your name" />
 		<a href="/play" role="button">Play</a>
 	</div>
@@ -46,6 +53,24 @@
 			display: flex;
 			gap: 12px;
 			width: max-content;
+
+			animation-duration: 1s;
+			animation-timing-function: ease-out;
+			animation-fill-mode: forwards;
+
+			&.anim {
+				animation-name: slidein;
+			}
+		}
+	}
+
+	@keyframes slidein {
+		from {
+			transform: translateX(125vw);
+		}
+
+		to {
+			transform: translateX(0px);
 		}
 	}
 </style>
