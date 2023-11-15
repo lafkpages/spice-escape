@@ -1,8 +1,10 @@
 import type { Scene } from 'phaser';
 
+import { goto } from '$app/navigation';
+
 import { getVar } from './css';
 
-function create(this: Scene) {
+export function create(this: Scene) {
 	console.log('Creating animations');
 
 	// create animations
@@ -68,13 +70,6 @@ function create(this: Scene) {
 
 	// background
 	this.cameras.main.setBackgroundColor(getVar('--bg2'));
-
-	// home screen
-	this.homeScreen = document.querySelector('div#home');
-	this.nickContainer = this.homeScreen.querySelector('div#nick-container');
-	this.nickInp = this.nickContainer.querySelector('input#nick-inp');
-	this.playBtn = this.nickContainer.querySelector('button#play-btn');
-	this.homeHeader = this.homeScreen.querySelector('header');
 
 	// focus nick input
 	setTimeout(() => {
@@ -387,7 +382,7 @@ function create(this: Scene) {
 			this.abilityImgsSet = false;
 
 			// show home screen
-			this.homeScreen.style.display = '';
+			goto('/');
 
 			// disconnect Socket.IO
 			this.socket.disconnect();
@@ -419,8 +414,6 @@ function create(this: Scene) {
 							"\nThese errors don't usually matter but only make your computer have less memory available :P"
 						);
 					}
-					delete this.players[id[0]];
-					delete id;
 				}
 			}
 

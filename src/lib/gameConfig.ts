@@ -4,6 +4,8 @@ import type { Types } from 'phaser';
 import { browser } from '$app/environment';
 
 import { preload } from './gamePreload';
+import { create } from './gameCreate';
+import { update } from './gameUpdate';
 
 export function config(extra?: Partial<Types.Core.GameConfig>): Types.Core.GameConfig {
 	return {
@@ -29,7 +31,9 @@ export function config(extra?: Partial<Types.Core.GameConfig>): Types.Core.GameC
 			height: '100%'
 		},
 		scene: {
-			preload
+			preload,
+			create,
+			update
 		},
 		parent: 'game',
 		disableContextMenu: true,
