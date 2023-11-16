@@ -61,3 +61,8 @@ button,
 	color: var(--orange);
 	opacity: 0.7;
 }
+
+img.pixelated {
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}

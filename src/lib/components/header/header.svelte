@@ -9,8 +9,8 @@
 </script>
 
 <header class:anim>
-	<img src="/img/headerNoHotSauce.png" alt="Spice Escape" class="header" />
-	<img src="/img/hotSauce.png" alt="" class="hot-sauce" />
+	<img src="/img/headerNoHotSauce.png" alt="Spice Escape" class="pixelated header" />
+	<img src="/img/hotSauce.png" alt="" class="pixelated hot-sauce" />
 </header>
 
 <style lang="scss">
@@ -30,11 +30,6 @@
 
 		&.anim {
 			animation-name: slidein;
-		}
-
-		img {
-			image-rendering: crisp-edges;
-			image-rendering: pixelated;
 		}
 
 		.header {
