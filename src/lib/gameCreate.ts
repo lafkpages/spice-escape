@@ -82,18 +82,18 @@ export function create(this: Scene) {
 	}, 500);
 
 	// when play button clicked
-	if (!has_set_events)
-		this.playBtn.addEventListener('click', (e) => {
-			// connect to server
-			this.socket.connect();
+	// if (!has_set_events)
+	// 	this.playBtn.addEventListener('click', (e) => {
+	// 		// connect to server
+	// 		this.socket.connect();
 
-			// send name to server
-			this.socket.emit('nick', this.nickInp.value);
+	// 		// send name to server
+	// 		this.socket.emit('nick', this.nickInp.value);
 
-			// document.body.requestFullscreen({
-			//   navigationUI: 'hide'
-			// });
-		});
+	// 		// document.body.requestFullscreen({
+	// 		//   navigationUI: 'hide'
+	// 		// });
+	// 	});
 
 	// platforms
 	this.killersPlat = this.add.image(100, 358, 'terrain16x16', 34).setDepth(1).setScale(2);
@@ -121,27 +121,6 @@ export function create(this: Scene) {
 
 	// finish line
 	this.finishLine = this.add.sprite(8100, 358, 'flags', 1);
-
-	// ability buttons
-	this.abilitiesDiv = document.querySelector('div#abilities');
-	this.abilityBtn1 = this.abilitiesDiv.querySelector('div#abilities button#ability-1.ability');
-	this.abilityBtn1.disabled = false;
-	this.abilityCooldown1 = this.abilityBtn1.querySelector('span.ability-cooldown');
-	this.abilityImg1 = this.abilityBtn1.querySelector('img.ability-img');
-	this.abilityBtn2 = this.abilitiesDiv.querySelector('div#abilities button#ability-2.ability');
-	this.abilityBtn2.disabled = false;
-	this.abilityCooldown2 = this.abilityBtn2.querySelector('span.ability-cooldown');
-	this.abilityImg2 = this.abilityBtn2.querySelector('img.ability-img');
-	this.abilityBtn3 = this.abilitiesDiv.querySelector('div#abilities button#ability-3.ability');
-	this.abilityBtn3.disabled = false;
-	this.abilityCooldown3 = this.abilityBtn3.querySelector('span.ability-cooldown');
-	this.abilityImg3 = this.abilityBtn3.querySelector('img.ability-img');
-	this.abilityBtn4 = this.abilitiesDiv.querySelector('div#abilities button#ability-4.ability');
-	this.abilityBtn4.disabled = false;
-	this.abilityCooldown4 = this.abilityBtn4.querySelector('span.ability-cooldown');
-	this.abilityImg4 = this.abilityBtn4.querySelector('img.ability-img');
-	this.abilityImgsSet = false;
-	this.abilityImgsURL = '/img/abilities/';
 
 	// players
 	this.players = {};
@@ -327,15 +306,6 @@ export function create(this: Scene) {
 			this
 		);
 	});
-
-	// game end screen
-	this.gameEndScreen = document.querySelector('div#end-screen');
-	this.gameEndTitle = this.gameEndScreen.querySelector('#end-screen-title');
-	this.gameEndWinners = this.gameEndScreen.querySelector('div#end-screen-winners');
-	this.gameEndHomeBtn = this.gameEndScreen.querySelector('button#end-screen-home');
-
-	// ads container
-	this.adsContainer = document.querySelector('div#ads');
 
 	// when home button is clicked
 	if (!has_set_events)
