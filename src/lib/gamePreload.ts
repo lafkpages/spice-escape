@@ -23,7 +23,7 @@ export function preload(this: Scene) {
 	});
 	this.load.image('spice2', '/img/spice2.png');
 
-	// init Socket.IO instance
+	// init WebSocket
 	this.data.set('ws', new WebSocket(location.origin.replace(/^http/i, 'ws') + '/game'));
 
 	// when connected to the server
@@ -38,14 +38,14 @@ export function preload(this: Scene) {
 	// when disconnected from the server
 	(this.data.get('ws') as WebSocket).addEventListener('close', (e) => {
 		// log
-		console.log('Socket.IO disconnected:', e);
+		console.log('WS disconnected:', e.reason);
 
 		// pause Phaser
 		this.scene.pause();
 
 		// ignore our disconnects
 		// TODO
-		if (e == 'io client disconnect') return;
+		if (e.reason == 'io client disconnect') return;
 
 		// alert
 		//alert('Disconnected from server');

@@ -323,7 +323,7 @@ export function create(this: Scene) {
 			// show home screen
 			goto('/');
 
-			// disconnect Socket.IO
+			// disconnect WebSocket
 			this.socket.disconnect();
 
 			// delete all players
