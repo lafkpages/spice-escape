@@ -299,8 +299,8 @@ export function create(this: Scene) {
 		// after a few miliseconds disconnect from server
 		this.time.delayedCall(
 			500,
-			function () {
-				this.socket.disconnect();
+			() => {
+				(this.data.get('ws') as WebSocket).close();
 			},
 			undefined,
 			this
@@ -324,7 +324,7 @@ export function create(this: Scene) {
 			goto('/');
 
 			// disconnect WebSocket
-			this.socket.disconnect();
+			(this.data.get('ws') as WebSocket).close();
 
 			// delete all players
 			for (const id of Object.entries(this.players)) {
