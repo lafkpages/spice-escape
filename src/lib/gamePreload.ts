@@ -24,7 +24,7 @@ export function preload(this: Scene) {
 	this.load.image('spice2', '/img/spice2.png');
 
 	// init Socket.IO instance
-	this.data.set('ws', new WebSocket(location.origin.replace(/^http/i, 'ws')));
+	this.data.set('ws', new WebSocket(location.origin.replace(/^http/i, 'ws') + '/game'));
 
 	// when connected to the server
 	(this.data.get('ws') as WebSocket).addEventListener('open', () => {
