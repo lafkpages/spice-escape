@@ -5,6 +5,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"build:proto": "pbjs -w es6 -t static-module -o src/lib/ws.js src/lib/ws.proto",
+		"build:proto-types": "pbts -o src/lib/ws.d.ts src/lib/ws.js",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -18,6 +20,7 @@
 		"phaser": "^3.70.0",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.10.1",
+		"protobufjs-cli": "^1.1.2",
 		"sass": "^1.69.5",
 		"svelte": "^4.0.5",
 		"svelte-check": "^3.4.3",

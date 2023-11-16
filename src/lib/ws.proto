@@ -1,0 +1,7 @@
+syntax = "proto3";
+package spice_escape;
+
+message WsMessage {
+  optional string nick = 1;
+}
+

@@ -4,6 +4,9 @@
 
 	let anim = false;
 
+	let nick = '';
+	$: nickEncoded = encodeURIComponent(nick);
+
 	onMount(() => {
 		anim = true;
 	});
@@ -13,8 +16,8 @@
 	<Header />
 
 	<div class="play-container" class:anim>
-		<input type="text" placeholder="Enter your name" />
-		<a href="/play" role="button">Play</a>
+		<input type="text" placeholder="Enter your name" bind:value={nick} />
+		<a href="/play?nick={nickEncoded}" role="button">Play</a>
 	</div>
 </section>
 
