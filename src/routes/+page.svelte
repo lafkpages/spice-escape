@@ -56,7 +56,7 @@
 
 			animation-duration: 1s;
 			animation-timing-function: ease-out;
-			animation-fill-mode: forwards;
+			animation-fill-mode: both;
 
 			&.anim {
 				animation-name: slidein;
