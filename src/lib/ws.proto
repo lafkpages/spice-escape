@@ -1,22 +1,40 @@
 syntax = "proto3";
 package spice_escape;
 
+enum PlayerRole {
+  runner = 0;
+  killer = 1;
+}
+
 message WsMessageClient {
   optional string nick = 1;
 }
 
 message WsMessageServer {
   optional string playerId = 1;
-  optional NewPlayer newPlayer = 2;
-  optional GameStarting gameStarting = 3;
+  optional PlayerJoin playerJoin = 2;
+  optional PlayerLeave playerLeave = 3;
+  optional GameStarting gameStarting = 4;
+  optional GameStart gameStart = 5;
+  optional GameEnd gameEnd = 6;
 
-  message NewPlayer {
+  message PlayerJoin {
     string playerId = 1;
     string nick = 2;
   }
 
+  message PlayerLeave {
+    string playerId = 1;
+  }
+
   message GameStarting {
     uint32 counter = 1;
+  }
+
+  message GameStart {}
+
+  message GameEnd {
+    PlayerRole winnerRole = 1;
   }
 }
 

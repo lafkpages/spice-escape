@@ -4,6 +4,7 @@
 
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
 	import { config } from '$lib/gameConfig';
 	import { phaser } from '$lib/phaser';
 	import { abilities } from '$lib/abilities';
@@ -15,6 +16,8 @@
 	export let data: PageData;
 
 	let game: import('phaser').Game;
+	let gameStarted = false;
+
 	let role = PlayerRole.Killer;
 
 	let ws: WebSocket | null = null;
@@ -35,17 +38,41 @@
 
 				console.log(data);
 
-				if (data.newPlayer?.playerId && data.newPlayer?.nick) {
-					console.log('New player', data.newPlayer);
-					players[data.newPlayer.playerId] = {
-						nick: data.newPlayer.nick
+				if (data.playerJoin?.playerId && data.playerJoin?.nick) {
+					console.log('Player joined:', data.playerJoin);
+					players[data.playerJoin.playerId] = {
+						nick: data.playerJoin.nick
 					};
+				}
+
+				if (data.playerLeave?.playerId) {
+					console.log('Player left:', data.playerLeave);
+					delete players[data.playerLeave.playerId];
+
+					// TODO: remove player from Phaser game
 				}
 
 				if (typeof data.gameStarting?.counter == 'number') {
 					console.log('Game starting in', data.gameStarting.counter);
 
-					gameOverlayText = `Game starting in ${Math.ceil(counter / 60)} seconds`;
+					gameOverlayText = `Game starting in ${Math.ceil(data.gameStarting.counter / 60)} seconds`;
+				}
+
+				if (data.gameStart) {
+					console.log('Game started');
+
+					gameOverlayText = '';
+					gameStarted = true;
+				}
+
+				if (data.gameEnd?.winnerRole) {
+					console.log('Game ended, winner role:', data.gameEnd.winnerRole);
+
+					goto(
+						`/game-end?winnerRole=${encodeURIComponent(
+							data.gameEnd.winnerRole
+						)}&role=${encodeURIComponent(role)}`
+					);
 				}
 			});
 
@@ -295,180 +322,6 @@
 							// game data
 							this.gameData = {};
 
-							// when a player joins the game
-							// this.socket.on('new player', (id) => {
-							// 	this.players[id] = null;
-
-							// 	// check if it's the current player
-							// 	if (id == this.socket.id) {
-							// 		// check if all players are here
-							// 		// TODO
-							// 		this.loadingTextMessage = 'Waiting for players';
-							// 	}
-							// });
-
-							// // when game is starting
-							// this.socket.on('game starting', (counter) => {
-							// 	// change text
-							// 	this.loadingTextMessage = `Game starting in ${Math.ceil(counter / 60)} seconds`;
-
-							// 	// refresh abilities
-							// 	this.abilityImgsSet = false;
-							// });
-
-							// when player data is received from the server
-							this.socket.on('game data', (data) => {
-								// save data in class properties
-								for (const key of Object.keys(data)) {
-									if (['players'].includes(key)) continue;
-
-									this.gameData[key] = data[key];
-								}
-
-								// save players separately
-								for (let entry of Object.entries(data.players))
-									if (this.players[entry[0]]) this.players[entry[0]].playerData = entry[1];
-							});
-
-							// when a player leaves
-							this.socket.on('player leave', (id) => {
-								// destroy the sprite from Phaser
-								if (this.players[id]) {
-									this.players[id].destroy();
-
-									// destroy the nick from Phaser
-									this.players[id].nick.destroy();
-								}
-
-								// delete it
-								delete this.players[id];
-							});
-
-							// when the game starts
-							this.socket.on('start game', () => {
-								this.gameStarted = true;
-								this.loadingTextMessage = '';
-
-								// reset ability cooldowns
-								this.abilityBtn1.disabled = false;
-								this.abilityBtn2.disabled = false;
-								this.abilityBtn3.disabled = false;
-								this.abilityBtn4.disabled = false;
-
-								// refresh abilities
-								this.abilityImgsSet = false;
-							});
-
-							// when the game ends
-							this.socket.on('game ended', (winnerRole) => {
-								// set end screen title
-								this.gameEndTitle.innerText = `${winnerRole}s won`;
-
-								// check if current player was a winner
-								this.gameEndTitle.classList.remove('victory');
-								this.gameEndTitle.classList.remove('defeat');
-								if (this.players[this.socket.id]) {
-									if (this.players[this.socket.id].playerData.role == winnerRole) {
-										this.gameEndTitle.classList.add('victory');
-									} else {
-										this.gameEndTitle.classList.add('defeat');
-									}
-								}
-
-								// show winner players
-								this.gameEndWinners.replaceChildren();
-								for (let id of Object.keys(this.players)) {
-									if (this.players[id] && this.players[id].playerData.role == winnerRole) {
-										// create div
-										const div = document.createElement('div');
-										div.className = `end-screen-player end-screen-player-${this.players[id].playerData.role}`;
-										div.dataset.nick = this.players[id].playerData.nick;
-
-										// create image
-										const img = document.createElement('img');
-										img.src = '/img/empty.png';
-
-										// add image to div
-										div.appendChild(img);
-
-										// add div to end screen
-										this.gameEndWinners.appendChild(div);
-									}
-								}
-
-								// show end screen
-								this.gameEndScreen.style.display = 'flex';
-
-								// after a few miliseconds disconnect from server
-								this.time.delayedCall(
-									500,
-									() => {
-										(this.data.get('ws') as WebSocket).close();
-									},
-									undefined,
-									this
-								);
-							});
-
-							// when home button is clicked
-							if (!has_set_events)
-								this.gameEndHomeBtn.addEventListener('click', (e) => {
-									// hide game end screen
-									this.gameEndScreen.style.display = 'none';
-
-									// hide abilities
-									this.abilityBtn1.style.display = 'none';
-									this.abilityBtn2.style.display = 'none';
-									this.abilityBtn3.style.display = 'none';
-									this.abilityBtn4.style.display = 'none';
-									this.abilityImgsSet = false;
-
-									// show home screen
-									goto('/');
-
-									// disconnect WebSocket
-									(this.data.get('ws') as WebSocket).close();
-
-									// delete all players
-									for (const id of Object.entries(this.players)) {
-										if (id[1]) {
-											try {
-												id[1].dispose();
-											} catch (err) {
-												console.error(id[1], err);
-											}
-											try {
-												id[1].nick.dispose();
-											} catch (err) {
-												console.error(id[1].nick, err);
-											}
-											try {
-												id[1].spice.dispose();
-											} catch (err) {
-												console.error(id[1].spice, err);
-											}
-											try {
-												id[1].frozen.dispose();
-											} catch (err) {
-												console.error(
-													id[1].frozen,
-													err,
-													"\nThese errors don't usually matter but only make your computer have less memory available :P"
-												);
-											}
-										}
-									}
-
-									// restart the scene
-									this.scene.restart();
-								});
-
-							// when game window loses focus
-							if (!has_set_events)
-								window.addEventListener('visibilitychange', (e) => {
-									console.log(document.visibilityState);
-								});
-
 							// Loading text
 							this.loadingText = this.add
 								.text(
@@ -483,7 +336,7 @@
 								.setOrigin(0.5, 0.5)
 								.setScrollFactor(0)
 								.setDepth(0)
-								.setColor(this.getVar('--orange'))
+								.setColor(getCssVar('--orange'))
 								.setAlign('center');
 							this.loadingTextMessage = 'Connecting';
 							this.loadingTextFrame = 0;
@@ -498,7 +351,7 @@
 								})
 								.setOrigin(0.5, 0.5)
 								.setDepth(0)
-								.setColor(this.getVar('--bg3'))
+								.setColor(getCssVar('--bg3'))
 								.setAlign('center');
 							this.killerBgText = this.add
 								.text(50, 300, 'KILLERS, KILL\nALL THE RUNNERS!', {
@@ -507,7 +360,7 @@
 								})
 								.setOrigin(0.5, 0.5)
 								.setDepth(0)
-								.setColor(this.getVar('--bg3'))
+								.setColor(getCssVar('--bg3'))
 								.setAlign('center');
 
 							this.gameStarted = false;
@@ -584,39 +437,8 @@
 								}
 							});
 
-							// ability buttons
-							if (!has_set_events)
-								this.abilitiesDiv.addEventListener('click', (e) => {
-									if (e.target.matches('div#abilities button.ability')) {
-										const ability = e.target.dataset.ability;
-
-										this.socket.emit('ability', ability, (resp) => {
-											if (resp == false) {
-												console.error('Error activating ability, refreshing...');
-												this.abilityImgsSet = false;
-												return;
-											}
-
-											e.target.disabled = true;
-											const dv = resp.cooldown / 60;
-											e.target.querySelector('span.ability-cooldown').innerText = Math.ceil(dv);
-											this.time.delayedCall(
-												dv * 1000,
-												function () {
-													e.target.disabled = false;
-												},
-												undefined,
-												this
-											);
-										});
-									}
-								});
-
 							// pause
 							this.scene.pause();
-
-							// save events done
-							has_set_events = true;
 						},
 						update: function () {
 							// draw obstacles
