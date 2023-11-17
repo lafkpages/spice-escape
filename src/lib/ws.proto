@@ -1,7 +1,22 @@
 syntax = "proto3";
 package spice_escape;
 
-message WsMessage {
+message WsMessageClient {
   optional string nick = 1;
+}
+
+message WsMessageServer {
+  optional string playerId = 1;
+  optional NewPlayer newPlayer = 2;
+  optional GameStarting gameStarting = 3;
+
+  message NewPlayer {
+    string playerId = 1;
+    string nick = 2;
+  }
+
+  message GameStarting {
+    uint32 counter = 1;
+  }
 }
 

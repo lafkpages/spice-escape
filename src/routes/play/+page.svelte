@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import type { Player } from '$lib/types';
 
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
@@ -18,18 +19,47 @@
 
 	let ws: WebSocket | null = null;
 
-	onMount(async () => {
+	const players: Record<string, Player> = {};
+
+	let gameOverlayText = '';
+
+	onMount(() => {
 		if (browser) {
 			// init WebSocket
 			ws = new WebSocket(location.origin.replace(/^http/i, 'ws') + '/game');
 
+			ws.addEventListener('message', async (e) => {
+				const data = spice_escape.WsMessageServer.decode(
+					Uint8Array.from(await e.data.arrayBuffer())
+				);
+
+				console.log(data);
+
+				if (data.newPlayer?.playerId && data.newPlayer?.nick) {
+					console.log('New player', data.newPlayer);
+					players[data.newPlayer.playerId] = {
+						nick: data.newPlayer.nick
+					};
+				}
+
+				if (typeof data.gameStarting?.counter == 'number') {
+					console.log('Game starting in', data.gameStarting.counter);
+
+					gameOverlayText = `Game starting in ${Math.ceil(counter / 60)} seconds`;
+				}
+			});
+
 			// send nickname
-			ws.send(
-				spice_escape.WsMessage.encode(
-					spice_escape.WsMessage.create({
-						nick: data.nick
-					})
-				).finish()
+			ws.addEventListener(
+				'open',
+				() => {
+					ws?.send(
+						spice_escape.WsMessageClient.encode({
+							nick: data.nick
+						}).finish()
+					);
+				},
+				{ once: true }
 			);
 
 			game = new phaser!.Game(
@@ -266,25 +296,25 @@
 							this.gameData = {};
 
 							// when a player joins the game
-							this.socket.on('new player', (id) => {
-								this.players[id] = null;
+							// this.socket.on('new player', (id) => {
+							// 	this.players[id] = null;
 
-								// check if it's the current player
-								if (id == this.socket.id) {
-									// check if all players are here
-									// TODO
-									this.loadingTextMessage = 'Waiting for players';
-								}
-							});
+							// 	// check if it's the current player
+							// 	if (id == this.socket.id) {
+							// 		// check if all players are here
+							// 		// TODO
+							// 		this.loadingTextMessage = 'Waiting for players';
+							// 	}
+							// });
 
-							// when game is starting
-							this.socket.on('game starting', (counter) => {
-								// change text
-								this.loadingTextMessage = `Game starting in ${Math.ceil(counter / 60)} seconds`;
+							// // when game is starting
+							// this.socket.on('game starting', (counter) => {
+							// 	// change text
+							// 	this.loadingTextMessage = `Game starting in ${Math.ceil(counter / 60)} seconds`;
 
-								// refresh abilities
-								this.abilityImgsSet = false;
-							});
+							// 	// refresh abilities
+							// 	this.abilityImgsSet = false;
+							// });
 
 							// when player data is received from the server
 							this.socket.on('game data', (data) => {
@@ -808,6 +838,10 @@
 	});
 </script>
 
+<h3 class="game-overlay-text">
+	{gameOverlayText}
+</h3>
+
 <div id="game">
 	<!-- Phaser canvas goes here -->
 </div>
@@ -821,6 +855,15 @@
 </div>
 
 <style>
+	.game-overlay-text {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		color: var(--orange);
+	}
+
 	.abilities {
 		position: fixed;
 		bottom: 16px;
